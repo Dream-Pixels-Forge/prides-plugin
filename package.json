@@ -1,0 +1,56 @@
+{
+  "name": "prides-plugin",
+  "version": "1.0.0",
+  "description": "PRIDES methodology plugin for OpenCode — Prototype, Review, Implement, Deploy, Extend, Secure workflow orchestration with 16 swarm tools, validation gates, autonomous agents, and context engineering",
+  "type": "module",
+  "license": "MIT",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "assets/",
+    "install.sh",
+    "uninstall.sh",
+    "README.md",
+    "opencode.example.jsonc"
+  ],
+  "scripts": {
+    "postinstall": "node -e \"console.log('\\n  prides-plugin installed! Run ./install.sh to set up agents, rules, skills, and scripts.\\n')\"",
+    "install:prides": "./install.sh",
+    "uninstall:prides": "./uninstall.sh"
+  },
+  "bin": {
+    "prides-install": "./install.sh",
+    "prides-uninstall": "./uninstall.sh"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "prides",
+    "agentic",
+    "workflow",
+    "orchestration",
+    "multi-agent",
+    "software-development-lifecycle",
+    "sdlc",
+    "tdd",
+    "validation-gates",
+    "context-engineering"
+  ],
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.15.0"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gitlawb/prides-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/Gitlawb/prides-plugin/issues"
+  },
+  "homepage": "https://github.com/Gitlawb/prides-plugin#readme"
+}

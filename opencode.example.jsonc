@@ -1,0 +1,14 @@
+{
+  // Example OpenCode config with PRIDES plugin
+  // Copy relevant sections to your opencode.jsonc
+
+  "plugins": [
+    // Point to the installed plugin
+    "file://~/.config/opencode/plugins/swarm/index.js"
+  ],
+
+  // Optional: Make PRIDES your primary agent
+  "agents": {
+    "primary": "prides"  // or leave unset to use manually via @prides
+  }
+}
