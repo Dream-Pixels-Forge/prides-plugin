@@ -12,8 +12,8 @@ describe("plugin integration", () => {
     expect(plugin.name).toBe("prides");
   });
 
-  test("plugin exports 6 tools", () => {
-    expect(plugin.tools.length).toBe(6);
+  test("plugin exports 11 tools", () => {
+    expect(plugin.tools.length).toBe(11);
   });
 
   test("tool names are correct", () => {
@@ -25,6 +25,11 @@ describe("plugin integration", () => {
       "prides_status",
       "prides_advance",
       "prides_agents",
+      "prides_log",
+      "prides_budget",
+      "prides_memory",
+      "prides_conflicts",
+      "prides_plan",
     ]);
   });
 
