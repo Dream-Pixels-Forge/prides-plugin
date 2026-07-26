@@ -1,6 +1,7 @@
 {
   "name": "prides",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Multi-agent orchestration plugin for opencode — PRIDES methodology (Prototype, Review, Implement, Deploy, Extend, Secure)",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

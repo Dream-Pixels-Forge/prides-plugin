@@ -1,7 +1,7 @@
 ---
 description: Manages task breakdown and progress tracking. Creates and maintains task lists and coordinates implementation workflow.
 mode: subagent
-model: Big Pickle
+model: big pickle
 temperature: 0.2
 color: "#0ea5e9"
 tools:

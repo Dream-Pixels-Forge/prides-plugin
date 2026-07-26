@@ -1,7 +1,7 @@
 ---
 description: Ensures code quality and consistency. Applies linting rules, formatting standards, and code style guidelines.
 mode: subagent
-model: Big Pickle
+model: big pickle
 temperature: 0.1
 color: "#64748b"
 tools:
