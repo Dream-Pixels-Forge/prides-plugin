@@ -1,8 +1,14 @@
+<div align="center">
+
 # prides-plugin
 
 A multi-agent orchestration plugin for [opencode](https://opencode.ai) that implements the **PRIDES** methodology — **P**rototype, **R**eview, **I**mplement, **D**eploy, **E**xtend, **S**ecure — for complete software development lifecycle management.
 
 PRIDES coordinates 20 specialized subagents across 6 phases, managing project state, dispatching tasks, and running each phase's agent sequence automatically.
+
+<img src="assets/banner.png" alt="PRIDES Plugin Banner" width="100%">
+
+</div>
 
 ## Installation
 
