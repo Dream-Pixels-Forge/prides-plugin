@@ -131,7 +131,9 @@ Each phase runs a sequence of specialized agents. The orchestrator tracks progre
 
 ## Tools
 
-The plugin exposes 6 tools to the opencode host:
+The plugin exposes 11 tools to the opencode host:
+
+### Core Tools
 
 | Tool | Description |
 |------|-------------|
@@ -141,6 +143,41 @@ The plugin exposes 6 tools to the opencode host:
 | `prides_status` | Show current PRIDES workflow status |
 | `prides_advance` | Advance the workflow to the next phase |
 | `prides_agents` | List all 20 PRIDES agents and their phases |
+
+### Infrastructure Tools
+
+| Tool | Description |
+|------|-------------|
+| `prides_log` | View pipeline execution logs with structured logging (trace ID, agent, tokens, latency) |
+| `prides_budget` | View token budget status and cost tracking |
+| `prides_memory` | Search pipeline memory (per-agent, shared, global) |
+| `prides_conflicts` | View and resolve agent conflicts (voting, confidence scoring) |
+| `prides_plan` | View and manage adaptive plans (backtracking, progress tracking) |
+
+## Infrastructure Features
+
+### Structured Logging
+Every pipeline step is logged with trace ID, agent name, tokens used, and latency. Logs are stored in `.prides/logs/pipeline.jsonl`.
+
+### Token Budget & Cost Tracking
+Set token limits per agent and globally. Track costs across the pipeline. Get alerts when approaching budget limits.
+
+### Three-Tier Memory
+- **Per-agent memory**: Private context for each agent across sessions
+- **Shared memory**: Context visible to all agents in a pipeline
+- **Global memory**: Persistent state across pipeline runs
+
+### Conflict Resolution
+When agents disagree, use voting (majority, weighted by confidence, or tiebreak) to resolve conflicts.
+
+### Adaptive Planning
+Plans can backtrack, skip steps, and dynamically insert new steps. Supports dependency tracking and progress monitoring.
+
+### Human-in-the-Loop
+High-risk actions (deploy, security, database) require human approval. Risk levels: low, medium, high, critical.
+
+### Parallel Execution
+Run independent tasks concurrently with configurable concurrency limits and timeout support.
 
 ## Agents
 
@@ -203,7 +240,7 @@ The plugin exposes 6 tools to the opencode host:
 ## Development
 
 ```bash
-bun test          # Run all tests (112 tests, 639 assertions)
+bun test          # Run all tests (112 tests, 719 assertions)
 bun run build     # Bundle to dist/
 bun run lint      # TypeScript type check
 bun run format    # Format source with Prettier
@@ -213,13 +250,21 @@ bun run format    # Format source with Prettier
 
 ```
 src/
-├─ index.ts         Plugin entry point
+├─ index.ts         Plugin entry point + tool definitions
 ├─ types.ts         Shared TypeScript types
 ├─ constants.ts     20 agent definitions + 6 phase definitions
 ├─ workflow.ts      State machine (persisted to .prides/<project>/state.json)
 ├─ orchestrator.ts  Project state detection
 ├─ dispatch.ts      Command → agent routing
 ├─ validation.ts    Input validation (prevents path traversal)
+├─ logging.ts       Structured logging with trace IDs
+├─ retry.ts         Retry logic with exponential backoff
+├─ memory.ts        Three-tier memory (per-agent, shared, global)
+├─ budget.ts        Token budget limits and cost tracking
+├─ approval.ts      Human-in-the-loop approval checkpoints
+├─ conflict.ts      Conflict resolution (voting, confidence scoring)
+├─ planning.ts      Adaptive planning with backtracking
+├─ parallel.ts      Concurrent/parallel execution support
 └─ workflows/
    ├─ base.ts       Shared workflow runner factory
    ├─ registry.ts   Phase routing and execution
